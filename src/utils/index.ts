@@ -10,8 +10,8 @@ const displayProductData = (): Promise<void> => {
             });
 
             const reviewPromises = products.map((product) =>
-                fetchProductReviews(product.id).then((reviews) => ({ product, reviews }) => {
-            ));
+                fetchProductReviews(product.id).then((reviews) => ({ product, reviews }))
+            );
             return Promise.all(reviewPromises);
         })
 
@@ -28,19 +28,21 @@ const displayProductData = (): Promise<void> => {
 
         //display sales report 
         .then((report) => {
-      console.log("Sales Report:");
-      console.log(`  Total sales: $${report.totalSales}`);
-      console.log(`  Units sold: ${report.unitsSold}`);
-      console.log(`  Average price: $${report.averagePrice}`);
+            console.log("Sales Report:");
+            console.log(`Total sales: $${report.totalSales}`);
+            console.log(`Units sold: ${report.unitsSold}`);
+            console.log(`Average price: $${report.averagePrice}`);
+
         })
 
-        //error handling
+        //error handling/custom error
         .catch((error) => {
-      console.error("Error:", error);
-    })
-    .finally(() => {
-      console.log("All API calls have been attempted.");
-    });
+            console.error("Error:", error);
+        })
+        .finally(() => {
+            console.log("All API calls have been attempted.");
+        });
 };
 
+displayProductData();
 

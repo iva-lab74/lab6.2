@@ -30,17 +30,18 @@ export const fetchProductReviews = (productId: number): Promise<{ id: number; re
 };
 
 
-export const fetchSalesReport = (): Promise<{ totalSales: number; unitsSold: number; averagePrice: number }[]> => {
+export const fetchSalesReport = (): Promise<{ totalSales: number; unitsSold: number; averagePrice: number }> => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (Math.random() < 0.8) {
-                resolve([
-                        { totalSales: 60000, unitsSold: 300, averagePrice: 40 },
-                    ]);
+                resolve({
+                     totalSales: 60000, unitsSold: 300, averagePrice: 40, 
+                });
             } else {
                 reject(`Failed to fetch sales report.`);
             }
         }, 1000);
     });
+
 };
 
