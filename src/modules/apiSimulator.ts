@@ -14,13 +14,13 @@ export const fetchProductCatalog = (): Promise<{ id: number; name: string; price
     });
 };
 
-export const fetchProductReviews = (): Promise<{ id: number; reviewer: string; rating: number; comment: string }[]> => {
+export const fetchProductReviews = (productId: number): Promise<{ id: number; reviewer: string; rating: number; comment: string }[]> => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (Math.random() < 0.8) {
                 resolve([
                     { id: 1, reviewer: "Paul", rating: 5, comment: "Satisfied!" },
-                    { id: 2, reviewer: "Molly", rating: 5 comment: "Great Product." },
+                    { id: 2, reviewer: "Molly", rating: 5, comment: "Great Product." },
                 ]);
             } else {
                 reject(`Failed to fetch reviews for product ID ${productId}".`);
